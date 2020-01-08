@@ -63,7 +63,7 @@ var budgetController = (function () {
 
         },
 
-        deleteItem: function(type, id){
+        deleteItem: function (type, id) {
             var ids, index;
 
             //id = 6
@@ -74,13 +74,13 @@ var budgetController = (function () {
             //index = 3
 
             //the different between forEach and map is that map return a new brand array
-            ids = data.allItems[type].map(function(current){
+            ids = data.allItems[type].map(function (current) {
                 return current.id;
             });
 
             index = ids.indexOf(id);
 
-            if(index !== -1){
+            if (index !== -1) {
                 data.allItems[type].splice(index, 1);
             }
 
@@ -170,6 +170,13 @@ var UIController = (function () {
             // insert the HTMl into the DOM 
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
+        },
+
+        deleteListItem: function (selectorID) {
+            //we have a method called removeChild to remove the item
+            //it's possible to remove it just from the parent
+            var el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el)
         },
 
         clearFields: function () {
@@ -262,7 +269,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         var itemID, splitID, type, ID;
         itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
-        if(itemID){
+        if (itemID) {
             //inc-1
             splitID = itemID.split('-');
             type = splitID[0];
@@ -273,7 +280,11 @@ var controller = (function (budgetCtrl, UICtrl) {
             budgetCtrl.deleteItem(type, ID);
 
             //2. delete the item from UI
+            UICtrl.deleteListItem(itemID);
+
             //3. update and show the new budget
+            updateBudget();
+
         }
     };
 
