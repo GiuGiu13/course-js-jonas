@@ -229,7 +229,9 @@ var controller = (function (budgetCtrl, UICtrl) {
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     };
 
-    var updateBudget = function () {
+
+
+    var updateBudget = function() {
         //1. calculate the budget
         budgetCtrl.calculateBudget();
 
@@ -239,10 +241,15 @@ var controller = (function (budgetCtrl, UICtrl) {
         //3. display the budget on the UI
         UICtrl.displayBudget(budget);
 
-
     }
 
-    var ctrlAddItem = function () {
+    var updatePercentages = function(){
+        //1. calculate percentages
+        //2. read percentages from the budget controller
+        //3. update the UI with the new percentages
+    },
+
+    var ctrlAddItem = function() {
         var input, newItem;
 
         //1. get the filed input data
@@ -260,8 +267,13 @@ var controller = (function (budgetCtrl, UICtrl) {
 
             //5. calculate and update budget
             updateBudget();
+
+            //6. Calculate and update percentages
+            updatePercentages();
         }
     };
+
+
 
     // we need event to know the target and then we can use event delegation 
     var ctrlDeleteItem = function (event) {
@@ -284,6 +296,9 @@ var controller = (function (budgetCtrl, UICtrl) {
 
             //3. update and show the new budget
             updateBudget();
+
+            //4. calculate and update percentages
+            updatePercentages();
 
         }
     };
