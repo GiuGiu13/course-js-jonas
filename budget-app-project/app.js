@@ -179,7 +179,8 @@ var UIController = (function () {
         expensesLabel: '.budget__expenses--value',
         percentageLabel: '.budget__expenses--percentage',
         container: '.container',
-        expensesPercLabel: '.item__percentage'
+        expensesPercLabel: '.item__percentage',
+        dateLabel: '.budget__title--month'
 
 
     };
@@ -199,8 +200,8 @@ var UIController = (function () {
         numSplit = num.split('.');
 
         int = numSplit[0];
-        if(int.length > 3){
-            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length -3 , 3); 
+        if (int.length > 3) {
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
             //input 23510, output 23,510
         }
         dec = numSplit[1];
@@ -209,7 +210,7 @@ var UIController = (function () {
         // return type +  ' ' + int + dec;
 
         //abbrevietion
-        return  (type === 'exp' ? "-" : '+') +  ' ' + int + '.' + dec;
+        return (type === 'exp' ? "-" : '+') + ' ' + int + '.' + dec;
 
 
     };
@@ -269,8 +270,8 @@ var UIController = (function () {
             obj.budget > 0 ? type = 'inc' : type = 'exp';
 
             document.querySelector(DOMstrings.budgetLabel).textContent = formatNumber(obj.budget, type);
-            document.querySelector(DOMstrings.incomeLabel).textContent = formatNumber(obj.totalInc , 'inc');
-            document.querySelector(DOMstrings.expensesLabel).textContent = formatNumber(obj.totalExp , 'exp');
+            document.querySelector(DOMstrings.incomeLabel).textContent = formatNumber(obj.totalInc, 'inc');
+            document.querySelector(DOMstrings.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
 
             if (obj.percentage > 0) {
                 document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';
@@ -302,7 +303,19 @@ var UIController = (function () {
 
         },
 
-       
+        displayMonth: function () {
+            var now, months, month, year;
+
+            now = new Date();
+            months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            
+            // var christmas =  new Date(2020, 11, 25);
+            month = now.getMonth();
+            year = now.getFullYear();
+            document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year;
+
+
+        },
 
         getDOMstrings: function () {
             return DOMstrings;
@@ -411,6 +424,7 @@ var controller = (function (budgetCtrl, UICtrl) {
     return {
         init: function () {
             console.log('App started');
+            UICtrl.displayMonth();
             UICtrl.displayBudget({
                 budget: 0,
                 totalInc: 0,
@@ -418,6 +432,7 @@ var controller = (function (budgetCtrl, UICtrl) {
                 percentage: -1
             });
             setupEventListeners();
+
         }
     }
 
