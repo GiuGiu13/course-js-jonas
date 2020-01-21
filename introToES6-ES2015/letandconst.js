@@ -23,7 +23,7 @@ function driversLicense5(passedTest){
         // console.log(firstName + ', born in ' + yearOfBirth + ' is officially allowed to drive a car.' )
     }
 
-    console.log(firstName + ', born in ' + yearOfBirth + ' is officially allowed to drive a car.' )
+    // console.log(firstName + ', born in ' + yearOfBirth + ' is officially allowed to drive a car.' )
 }
 
 driversLicense5(true);
@@ -47,7 +47,7 @@ function driversLicense6(passedTest){
 
         // console.log(firstName + ', born in ' + yearOfBirth + ' is officially allowed to drive a car.' )
     }
-    console.log(firstName + ', born in ' + yearOfBirth + ' is officially allowed to drive a car.' )
+    // console.log(firstName + ', born in ' + yearOfBirth + ' is officially allowed to drive a car.' )
 }
 
 driversLicense6(true);
@@ -67,8 +67,8 @@ driversLicense6(true);
 
 var i = 23;
 for(var i  = 0; i < 5; i++ ){
-    console.log(i)
+    // console.log(i)
 }
-console.log(i);
+// console.log(i);
 //with let because the block scope, also if two variables have the same name they will be different and separate variables
 //with var the variable with the same name will be overwritten
