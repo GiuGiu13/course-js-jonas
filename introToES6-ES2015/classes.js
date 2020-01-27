@@ -8,7 +8,7 @@ var Person5 = function(name, yearOfBirth, job){
 }
 
 Person5.prototype.calculateAge = function(){
-    var age = new Date().getFullYear - this.yearOfBirth;
+    var age = new Date().getFullYear() - this.yearOfBirth;
     console.log(age);
 }
 
@@ -24,7 +24,7 @@ class Person6 {
     }
 
     calculateAge(){
-        var age = new Date().getFullYear - this.yearOfBirth;
+        var age = new Date().getFullYear() - this.yearOfBirth;
         console.log(age);
     }
     static greeting() {
