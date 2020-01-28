@@ -8,7 +8,7 @@ function getRecipe(){
 
         setTimeout(id => {
             const recipe = {
-                title: 'Fresh tomato pasta',
+                title: 'Crunchies, croccantini',
                 publisher: 'Gaga'
             }
             console.log(`${id}: ${recipe.title}`);
