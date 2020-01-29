@@ -1,3 +1,3 @@
-console.log('imported module');
+console.log('imported module forza!!!!');
 
-export default 23;
+export default 223333223;

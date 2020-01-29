@@ -1,4 +1,5 @@
 // Global app controller
 import x from './test';
 
-console.log(`imported ${x} from another module`);
+console.log(`importeddddd ${x} uffaaa from another module called test.js ciao`);
+console.log('ciaooooo')
