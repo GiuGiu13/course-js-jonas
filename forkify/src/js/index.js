@@ -12,7 +12,39 @@
 
 import Search from './models/Search';
 
-const search = new Search('pizza');
+//all the data in this moment is a state, and we want that to be in one place, like one central variable object
+//that contain all the data in one moment, in one place, in  one object
+//global state of the app
+//-search object
+//-current recipe object
+//-shopping list object
+//-liked recipes
+// all this data will be stored in the state object in one time, in one place
+// we start with an empy object, so everytime we reload the app the state will be empty
+const state = {};
 
-console.log(search)
+const controlSearch = async () =>{
+    //1) get query from view
+    const query = "pizza" //TODO
+    
+    if(query){
+        //2) new search object and add to state
+        state.search = new Search(query);
+
+        //3) prepare UI for results
+
+        //4) search for recipes
+        await state.search.getResults();
+
+        //5) render results on UI
+        console.log(state.search.result)
+    }
+}
+
+document.querySelector('.search').addEventListener('submit', e => {
+    e.preventDefault();
+    controlSearch();
+});
+
+
 search.getResults();
