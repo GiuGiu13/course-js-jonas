@@ -15,7 +15,7 @@ import Search from './models/Search';
 //so we are going to have every variable from search view stored in the variable searchView
 import * as searchView from './views/searchView';
 
-import { elements } from './views/base'
+import { elements, renderLoader, clearLoader } from './views/base'
 
 //all the data in this moment is a state, and we want that to be in one place, like one central variable object
 //that contain all the data in one moment, in one place, in  one object
@@ -40,10 +40,14 @@ const controlSearch = async () =>{
         searchView.clearInput();
         searchView.clearResults();
 
+        renderLoader(elements.searchRes);
+
+
         //4) search for recipes
         await state.search.getResults();
 
         //5) render results on UI
+        clearLoader();
         searchView.renderResults(state.search.result);
     }
 }
